@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bdyon3gfnjwn3"]
+
+[ext_resource type="Texture2D" uid="uid://bd8dw5hsmkpjy" path="res://icon.svg" id="1_kbpeb"]
+
+[node name="BeatIndicatorIcon" type="TextureRect"]
+texture = ExtResource("1_kbpeb")
+expand_mode = 2

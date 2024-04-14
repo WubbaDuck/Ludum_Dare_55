@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dtrd1c5tiqsbd"]
+
+[ext_resource type="PackedScene" uid="uid://ccjwrja5m0nvu" path="res://scenes/ui.tscn" id="1_bav60"]
+[ext_resource type="Texture2D" uid="uid://bd8dw5hsmkpjy" path="res://icon.svg" id="2_tpg1c"]
+[ext_resource type="Script" path="res://scripts/gameManager.gd" id="3_2qaok"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="4_kehoo"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="4_tbsi5"]
+
+[node name="Game" type="Node2D"]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UI" instance=ExtResource("1_bav60")]
+
+[node name="Background" type="CanvasLayer" parent="."]
+layer = -100
+
+[node name="TextureRect" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_tpg1c")
+
+[node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("playerCreatureSpawn", "enemyCreatureSpawn")]
+script = ExtResource("3_2qaok")
+playerCreatureSpawn = NodePath("../Player/Spawn")
+enemyCreatureSpawn = NodePath("../Enemy/Spawn")
+
+[node name="Player" type="Node2D" parent="."]
+position = Vector2(150, 600)
+script = ExtResource("4_kehoo")
+
+[node name="Spawn" type="Node2D" parent="Player"]
+position = Vector2(400, 0)
+
+[node name="Enemy" type="Node2D" parent="."]
+position = Vector2(1770, 600)
+script = ExtResource("4_tbsi5")
+
+[node name="Spawn" type="Node2D" parent="Enemy"]
+position = Vector2(-400, 0)

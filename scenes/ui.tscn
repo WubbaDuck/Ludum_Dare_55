@@ -1,0 +1,218 @@
+[gd_scene load_steps=17 format=3 uid="uid://ccjwrja5m0nvu"]
+
+[ext_resource type="Script" path="res://scripts/manaManager.gd" id="1_25fgb"]
+[ext_resource type="Texture2D" uid="uid://bd8dw5hsmkpjy" path="res://icon.svg" id="1_g70gu"]
+[ext_resource type="Script" path="res://scripts/gemStackManager.gd" id="2_2nu2c"]
+[ext_resource type="Shader" path="res://shaders/manaBottle.gdshader" id="2_cnsm5"]
+[ext_resource type="PackedScene" uid="uid://qpnvfh48h43m" path="res://scenes/stacked_gem.tscn" id="3_08eq0"]
+[ext_resource type="Script" path="res://scripts/healthManager.gd" id="4_srlyo"]
+[ext_resource type="Script" path="res://scripts/gemHandManager.gd" id="6_7wnlp"]
+[ext_resource type="Script" path="res://scripts/beatIndicator.gd" id="6_fofaq"]
+[ext_resource type="Script" path="res://scripts/gemBag.gd" id="6_rrjfo"]
+[ext_resource type="PackedScene" uid="uid://bdyon3gfnjwn3" path="res://scenes/beat_indicator_icon.tscn" id="7_d48ih"]
+[ext_resource type="Texture2D" uid="uid://de18v1qvd7c17" path="res://assets/images/default_creature.jpg" id="7_qhoca"]
+[ext_resource type="PackedScene" uid="uid://drsldy0qt30qi" path="res://scenes/gem_slot.tscn" id="7_tshlm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3enxc"]
+shader = ExtResource("2_cnsm5")
+shader_parameter/fillAmount = 1.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_y423k"]
+content_margin_left = 25.0
+content_margin_top = 800.0
+content_margin_right = 25.0
+content_margin_bottom = 25.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x51ie"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("1_g70gu")
+modulate_color = Color(0.462745, 0.45098, 0.0117647, 1)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rf2ba"]
+content_margin_left = 50.0
+content_margin_top = 25.0
+content_margin_right = 50.0
+content_margin_bottom = 25.0
+texture = ExtResource("1_g70gu")
+modulate_color = Color(0.294118, 0.294118, 0.294118, 1)
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mana" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 153.0
+offset_bottom = 153.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_25fgb")
+
+[node name="ManaContents" type="TextureRect" parent="Mana"]
+modulate = Color(1, 0, 0.172549, 1)
+material = SubResource("ShaderMaterial_3enxc")
+layout_mode = 2
+texture = ExtResource("1_g70gu")
+stretch_mode = 2
+
+[node name="Bottle" type="TextureRect" parent="Mana"]
+modulate = Color(0, 0.890196, 1, 0.184314)
+layout_mode = 2
+texture = ExtResource("1_g70gu")
+stretch_mode = 2
+
+[node name="ManaLabel" type="Label" parent="Mana"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "10"
+
+[node name="PlayerHealth" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_left = 175.0
+offset_top = 25.0
+offset_right = 303.0
+offset_bottom = 153.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("4_srlyo")
+
+[node name="HealthContents" type="TextureRect" parent="PlayerHealth"]
+modulate = Color(1, 0, 0.172549, 1)
+layout_mode = 2
+texture = ExtResource("1_g70gu")
+stretch_mode = 2
+
+[node name="Bottle" type="TextureRect" parent="PlayerHealth"]
+modulate = Color(1, 0.509804, 0.498039, 0.184314)
+layout_mode = 2
+texture = ExtResource("1_g70gu")
+stretch_mode = 2
+
+[node name="EnemyHealth" type="CenterContainer" parent="."]
+layout_mode = 2
+offset_left = 1750.0
+offset_top = 25.0
+offset_right = 1878.0
+offset_bottom = 153.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("4_srlyo")
+
+[node name="HealthContents" type="TextureRect" parent="EnemyHealth"]
+modulate = Color(1, 0, 0.172549, 1)
+layout_mode = 2
+texture = ExtResource("1_g70gu")
+stretch_mode = 2
+
+[node name="Bottle" type="TextureRect" parent="EnemyHealth"]
+modulate = Color(1, 0.509804, 0.498039, 0.184314)
+layout_mode = 2
+texture = ExtResource("1_g70gu")
+stretch_mode = 2
+
+[node name="GemStackMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+offset_left = 25.0
+offset_top = 25.0
+offset_right = 1895.0
+offset_bottom = 1055.0
+
+[node name="GemStackPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 1251.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_y423k")
+
+[node name="GemStack" type="VBoxContainer" parent="GemStackPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_constants/separation = 5
+script = ExtResource("2_2nu2c")
+
+[node name="StackedGem" parent="GemStackPanel/GemStack" instance=ExtResource("3_08eq0")]
+layout_mode = 2
+
+[node name="StackedGem2" parent="GemStackPanel/GemStack" instance=ExtResource("3_08eq0")]
+layout_mode = 2
+
+[node name="StackedGem3" parent="GemStackPanel/GemStack" instance=ExtResource("3_08eq0")]
+layout_mode = 2
+
+[node name="StackedGem4" parent="GemStackPanel/GemStack" instance=ExtResource("3_08eq0")]
+layout_mode = 2
+
+[node name="StackedGem5" parent="GemStackPanel/GemStack" instance=ExtResource("3_08eq0")]
+layout_mode = 2
+
+[node name="GemBag" type="TextureRect" parent="."]
+layout_mode = 2
+offset_left = 1767.0
+offset_top = 927.0
+offset_right = 1895.0
+offset_bottom = 1055.0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture = ExtResource("1_g70gu")
+script = ExtResource("6_rrjfo")
+
+[node name="BeatIndicatorPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -37.5
+offset_top = 25.0
+offset_right = 37.5
+offset_bottom = 100.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_x51ie")
+script = ExtResource("6_fofaq")
+beatOnImage = ExtResource("1_g70gu")
+beatOffImage = ExtResource("7_qhoca")
+
+[node name="BeatIndicatorHContainer" type="HBoxContainer" parent="BeatIndicatorPanel"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+
+[node name="BeatIndicatorIcon" parent="BeatIndicatorPanel/BeatIndicatorHContainer" instance=ExtResource("7_d48ih")]
+layout_mode = 2
+
+[node name="GemHandPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -600.0
+offset_top = -300.0
+offset_right = 600.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_rf2ba")
+script = ExtResource("6_7wnlp")
+
+[node name="GemHandHContainer" type="HBoxContainer" parent="GemHandPanel"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="GemSlot" parent="GemHandPanel/GemHandHContainer" instance=ExtResource("7_tshlm")]
+layout_mode = 2

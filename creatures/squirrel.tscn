@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfmrs60sleo3m"]
+
+[ext_resource type="Script" path="res://scripts/summonedCreature.gd" id="1_rmq2y"]
+[ext_resource type="Texture2D" uid="uid://de18v1qvd7c17" path="res://assets/images/default_creature.jpg" id="1_t76qy"]
+
+[node name="Squirrel" type="Node2D"]
+script = ExtResource("1_rmq2y")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_t76qy")
