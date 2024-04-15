@@ -1,17 +1,23 @@
-[gd_scene load_steps=17 format=3 uid="uid://ccjwrja5m0nvu"]
+[gd_scene load_steps=23 format=3 uid="uid://ccjwrja5m0nvu"]
 
 [ext_resource type="Script" path="res://scripts/manaManager.gd" id="1_25fgb"]
-[ext_resource type="Texture2D" uid="uid://bd8dw5hsmkpjy" path="res://icon.svg" id="1_g70gu"]
 [ext_resource type="Script" path="res://scripts/gemStackManager.gd" id="2_2nu2c"]
 [ext_resource type="Shader" path="res://shaders/manaBottle.gdshader" id="2_cnsm5"]
 [ext_resource type="PackedScene" uid="uid://qpnvfh48h43m" path="res://scenes/stacked_gem.tscn" id="3_08eq0"]
+[ext_resource type="Texture2D" uid="uid://dc4xptnfatttw" path="res://assets/images/manaContents.png" id="3_lfwi2"]
 [ext_resource type="Script" path="res://scripts/healthManager.gd" id="4_srlyo"]
+[ext_resource type="Texture2D" uid="uid://dvjwgku1bbyqh" path="res://assets/images/bottle.png" id="4_xckb3"]
 [ext_resource type="Script" path="res://scripts/gemHandManager.gd" id="6_7wnlp"]
 [ext_resource type="Script" path="res://scripts/beatIndicator.gd" id="6_fofaq"]
+[ext_resource type="Texture2D" uid="uid://qa1gq3m5w58l" path="res://assets/images/healthContents.png" id="6_om5xa"]
 [ext_resource type="Script" path="res://scripts/gemBag.gd" id="6_rrjfo"]
 [ext_resource type="PackedScene" uid="uid://bdyon3gfnjwn3" path="res://scenes/beat_indicator_icon.tscn" id="7_d48ih"]
-[ext_resource type="Texture2D" uid="uid://de18v1qvd7c17" path="res://assets/images/default_creature.jpg" id="7_qhoca"]
 [ext_resource type="PackedScene" uid="uid://drsldy0qt30qi" path="res://scenes/gem_slot.tscn" id="7_tshlm"]
+[ext_resource type="Texture2D" uid="uid://lwiks81y5kft" path="res://assets/images/gemBag.png" id="9_kc03s"]
+[ext_resource type="Texture2D" uid="uid://cm6jkt1iklbmd" path="res://assets/images/beatTracker.png" id="11_fw3wg"]
+[ext_resource type="Texture2D" uid="uid://bnvc30qk68kl6" path="res://assets/images/beatIconLit.png" id="13_efgn6"]
+[ext_resource type="Texture2D" uid="uid://vgnbxfmmk4e4" path="res://assets/images/beatIconUnlit.png" id="14_r1115"]
+[ext_resource type="Texture2D" uid="uid://ddiydgyww8vj5" path="res://assets/images/hand.png" id="14_spsx0"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_3enxc"]
 shader = ExtResource("2_cnsm5")
@@ -25,19 +31,17 @@ content_margin_bottom = 25.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x51ie"]
 content_margin_left = 10.0
-content_margin_top = 10.0
+content_margin_top = 5.0
 content_margin_right = 10.0
 content_margin_bottom = 10.0
-texture = ExtResource("1_g70gu")
-modulate_color = Color(0.462745, 0.45098, 0.0117647, 1)
+texture = ExtResource("11_fw3wg")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rf2ba"]
-content_margin_left = 50.0
-content_margin_top = 25.0
-content_margin_right = 50.0
+content_margin_left = 25.0
+content_margin_top = 10.0
+content_margin_right = 25.0
 content_margin_bottom = 25.0
-texture = ExtResource("1_g70gu")
-modulate_color = Color(0.294118, 0.294118, 0.294118, 1)
+texture = ExtResource("14_spsx0")
 
 [node name="UI" type="Control"]
 layout_mode = 3
@@ -46,9 +50,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ManaLabel" type="Label" parent="."]
+layout_mode = 2
+offset_left = 60.0
+offset_top = 143.935
+offset_right = 118.0
+offset_bottom = 212.935
+theme_override_font_sizes/font_size = 50
+text = "10"
+horizontal_alignment = 1
 
 [node name="Mana" type="CenterContainer" parent="."]
-layout_mode = 2
+layout_mode = 1
 offset_left = 25.0
 offset_top = 25.0
 offset_right = 153.0
@@ -60,20 +76,16 @@ script = ExtResource("1_25fgb")
 [node name="ManaContents" type="TextureRect" parent="Mana"]
 modulate = Color(1, 0, 0.172549, 1)
 material = SubResource("ShaderMaterial_3enxc")
+custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
-texture = ExtResource("1_g70gu")
-stretch_mode = 2
+texture = ExtResource("3_lfwi2")
+expand_mode = 4
 
 [node name="Bottle" type="TextureRect" parent="Mana"]
-modulate = Color(0, 0.890196, 1, 0.184314)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-texture = ExtResource("1_g70gu")
-stretch_mode = 2
-
-[node name="ManaLabel" type="Label" parent="Mana"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 50
-text = "10"
+texture = ExtResource("4_xckb3")
+expand_mode = 4
 
 [node name="PlayerHealth" type="CenterContainer" parent="."]
 layout_mode = 2
@@ -87,15 +99,16 @@ script = ExtResource("4_srlyo")
 
 [node name="HealthContents" type="TextureRect" parent="PlayerHealth"]
 modulate = Color(1, 0, 0.172549, 1)
+custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
-texture = ExtResource("1_g70gu")
-stretch_mode = 2
+texture = ExtResource("6_om5xa")
+expand_mode = 4
 
 [node name="Bottle" type="TextureRect" parent="PlayerHealth"]
-modulate = Color(1, 0.509804, 0.498039, 0.184314)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-texture = ExtResource("1_g70gu")
-stretch_mode = 2
+texture = ExtResource("4_xckb3")
+expand_mode = 4
 
 [node name="EnemyHealth" type="CenterContainer" parent="."]
 layout_mode = 2
@@ -109,22 +122,16 @@ script = ExtResource("4_srlyo")
 
 [node name="HealthContents" type="TextureRect" parent="EnemyHealth"]
 modulate = Color(1, 0, 0.172549, 1)
+custom_minimum_size = Vector2(115, 0)
 layout_mode = 2
-texture = ExtResource("1_g70gu")
-stretch_mode = 2
+texture = ExtResource("6_om5xa")
+expand_mode = 4
 
 [node name="Bottle" type="TextureRect" parent="EnemyHealth"]
-modulate = Color(1, 0.509804, 0.498039, 0.184314)
+custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
-texture = ExtResource("1_g70gu")
-stretch_mode = 2
-
-[node name="GemStackMargin" type="MarginContainer" parent="."]
-layout_mode = 2
-offset_left = 25.0
-offset_top = 25.0
-offset_right = 1895.0
-offset_bottom = 1055.0
+texture = ExtResource("4_xckb3")
+expand_mode = 4
 
 [node name="GemStackPanel" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -134,7 +141,6 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_y423k")
 
 [node name="GemStack" type="VBoxContainer" parent="GemStackPanel"]
 layout_mode = 2
-size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_constants/separation = 5
 script = ExtResource("2_2nu2c")
@@ -156,13 +162,14 @@ layout_mode = 2
 
 [node name="GemBag" type="TextureRect" parent="."]
 layout_mode = 2
-offset_left = 1767.0
-offset_top = 927.0
-offset_right = 1895.0
-offset_bottom = 1055.0
+offset_left = 1700.0
+offset_top = 890.0
+offset_right = 1828.0
+offset_bottom = 1018.0
 size_flags_horizontal = 8
 size_flags_vertical = 8
-texture = ExtResource("1_g70gu")
+texture = ExtResource("9_kc03s")
+expand_mode = 4
 script = ExtResource("6_rrjfo")
 
 [node name="BeatIndicatorPanel" type="PanelContainer" parent="."]
@@ -179,8 +186,8 @@ size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_x51ie")
 script = ExtResource("6_fofaq")
-beatOnImage = ExtResource("1_g70gu")
-beatOffImage = ExtResource("7_qhoca")
+beatOnImage = ExtResource("13_efgn6")
+beatOffImage = ExtResource("14_r1115")
 
 [node name="BeatIndicatorHContainer" type="HBoxContainer" parent="BeatIndicatorPanel"]
 layout_direction = 3
@@ -190,6 +197,7 @@ theme_override_constants/separation = 5
 
 [node name="BeatIndicatorIcon" parent="BeatIndicatorPanel/BeatIndicatorHContainer" instance=ExtResource("7_d48ih")]
 layout_mode = 2
+texture = ExtResource("13_efgn6")
 
 [node name="GemHandPanel" type="PanelContainer" parent="."]
 layout_mode = 1

@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Creature" load_steps=4 format=3 uid="uid://dyybr5gnaun4y"]
+
+[ext_resource type="PackedScene" uid="uid://gofbd3gpxn0d" path="res://creatures/bee.tscn" id="1_5csgw"]
+[ext_resource type="Texture2D" uid="uid://80xo625juguv" path="res://assets/images/mugshot_bee.png" id="2_k1by7"]
+[ext_resource type="Script" path="res://scripts/creature.gd" id="3_puvg7"]
+
+[resource]
+script = ExtResource("3_puvg7")
+name = "squirrel"
+cost = 2
+hp = 2
+creatureImage = ExtResource("2_k1by7")
+gemColor = Color(1, 1, 1, 1)
+creatureBody = ExtResource("1_5csgw")
+attackSoundName = "beeAttack"

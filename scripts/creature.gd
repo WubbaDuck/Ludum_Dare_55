@@ -7,4 +7,5 @@ class_name Creature
 @export var creatureImage = preload("res://assets/images/default_creature.jpg")
 @export var gemColor = Color(1, 1, 1)
 @export var creatureBody : PackedScene
+@export var attackSoundName = "none"
 var gemImage = preload("res://icon.svg")

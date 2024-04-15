@@ -1,6 +1,8 @@
 extends Node
 
 @onready var gm = get_parent().get_node("GameManager")
+@onready var healthManager = get_parent().get_node("UI").get_node("UI").get_node("EnemyHealth")
+@onready var animPlayer = $EnemyBody/AnimationPlayer
 
 var maxHandSize = 4
 var hand = []
@@ -8,13 +10,14 @@ var gemStack = []
 var gemBag = []
 var maxHealth = 10
 var currentHealth = 0
-var maxMana = 10
-var currentMana = 0
+var maxMana = 8
+var currentMana = 3
 var currentBeat = 0
 var beatToAct = 0
 
 func _ready():
 	currentHealth = maxHealth
+	healthManager.setMaxHealth(maxHealth)
 
 func loadCreatures(creatureNames : Array, shuffle : bool = false):
 	if(shuffle):
@@ -86,7 +89,6 @@ func pickSummonee(dudes):
 		costs.append(dude.cost)
 	
 	topCost = costs.max()
-	print(topCost)
 		
 	for dude in dudes:
 		if dude.cost == topCost:
@@ -97,8 +99,6 @@ func pickSummonee(dudes):
 func setBeatToAct(beatsPerRound):
 	beatToAct = randi() % beatsPerRound
 	currentBeat = 0
-	
-	print("BeatToAct: " + str(beatToAct))
 
 
 
@@ -113,6 +113,14 @@ func decreaseMana(amount):
 	
 func increaseHealth(amount):
 	currentHealth += amount
+	healthManager.increaseHealth(amount)
 	
 func decreaseHealth(amount):
 	currentHealth -= amount
+	healthManager.decreaseHealth(amount)
+
+func animIdle():
+	animPlayer.play("idle")
+	
+func animCast():
+	animPlayer.play("cast")

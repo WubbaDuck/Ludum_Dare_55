@@ -5,6 +5,7 @@ extends Node
 @onready var gemSlot = preload("res://scenes/gem_slot.tscn")
 @onready var gemHandContainer = $GemHandHContainer
 @onready var gemStack = get_parent().get_node("GemStackPanel/GemStack")
+@onready var audioPlayer = get_tree().current_scene.get_node("AudioPlayer")
 
 var currentGemsInHand = 0
 
@@ -31,9 +32,10 @@ func addGem(stackedGem):
 				# Set image and cost for this Gem
 				newGem.get_child(0).get_child(0).get_node("CreatureImage").texture = newGem.creatureTexture
 				newGem.get_child(0).get_child(0).get_node("CostLabel").text = str(newGem.cost)
-				
+								
 				slot.addGem(newGem)
 				currentGemsInHand += 1
+				audioPlayer.playSFX("newGem")
 				break
 
 func removeGem(gem):

@@ -1,14 +1,15 @@
 [gd_resource type="Resource" script_class="Creature" load_steps=4 format=3 uid="uid://d2jxmdxrphtfi"]
 
 [ext_resource type="PackedScene" uid="uid://bfmrs60sleo3m" path="res://creatures/squirrel.tscn" id="1_oxjk0"]
-[ext_resource type="Texture2D" uid="uid://de18v1qvd7c17" path="res://assets/images/default_creature.jpg" id="1_t4sbl"]
+[ext_resource type="Texture2D" uid="uid://qx0h76f1m6gu" path="res://assets/images/mugshot_squirrel.png" id="2_6wvja"]
 [ext_resource type="Script" path="res://scripts/creature.gd" id="2_yj7pw"]
 
 [resource]
 script = ExtResource("2_yj7pw")
 name = "squirrel"
-cost = 1
-hp = 1
-creatureImage = ExtResource("1_t4sbl")
+cost = 3
+hp = 3
+creatureImage = ExtResource("2_6wvja")
 gemColor = Color(1, 1, 1, 1)
 creatureBody = ExtResource("1_oxjk0")
+attackSoundName = "squirrelAttack"

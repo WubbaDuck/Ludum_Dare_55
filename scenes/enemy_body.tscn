@@ -1,0 +1,208 @@
+[gd_scene load_steps=6 format=3 uid="uid://cjuqnqwpatpol"]
+
+[ext_resource type="Texture2D" uid="uid://bra4gtdu2hcpr" path="res://assets/images/characters.png" id="1_hpnmo"]
+
+[sub_resource type="Animation" id="Animation_in5gx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.74048, -0.221375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.443475]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Body/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(51.5603, -215.746)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-2.05858]
+}
+
+[sub_resource type="Animation" id="Animation_ctowa"]
+resource_name = "cast"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-1.74048, -0.221375), Vector2(121, -43), Vector2(-217, -7), Vector2(-1.74048, -0.221375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [-0.443475, -0.443475, -0.623882, -0.443475]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Body/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(51.5603, -215.746), Vector2(51.5603, -215.746), Vector2(51.5603, -215.746)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-2.05858, -2.42238, -2.05858]
+}
+
+[sub_resource type="Animation" id="Animation_3bi5y"]
+resource_name = "idle"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Skeleton2D/Body:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.74048, -0.221375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Skeleton2D/Body:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-0.443475]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Skeleton2D/Body/Head:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(51.5603, -215.746), Vector2(51.5603, -215.746), Vector2(51.5603, -215.746)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Skeleton2D/Body/Head:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [-2.05858, -2.27714, -2.05858]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_sldc5"]
+_data = {
+"RESET": SubResource("Animation_in5gx"),
+"cast": SubResource("Animation_ctowa"),
+"idle": SubResource("Animation_3bi5y")
+}
+
+[node name="PlayerBody" type="Node2D"]
+
+[node name="Polygons" type="Node2D" parent="."]
+
+[node name="Head" type="Polygon2D" parent="Polygons"]
+position = Vector2(-689.74, -430.221)
+antialiased = true
+texture = ExtResource("1_hpnmo")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(579.389, -6.10687, 659.924, -8.77863, 706.489, 136.26, 701.908, 158.779, 675.573, 216.031, 619.847, 236.26, 543.13, 210.687, 463.74, 160.687, 466.412, 143.13, 512.977, 137.405, 527.863, 92.7481)
+uv = PackedVector2Array(579.389, -6.10687, 659.924, -8.77863, 706.489, 136.26, 701.908, 158.779, 675.573, 216.031, 619.847, 236.26, 543.13, 210.687, 463.74, 160.687, 466.412, 143.13, 512.977, 137.405, 527.863, 92.7481)
+polygons = [PackedInt32Array(12, 13, 8), PackedInt32Array(13, 14, 7), PackedInt32Array(6, 14, 15), PackedInt32Array(18, 17, 6), PackedInt32Array(17, 16, 6), PackedInt32Array(16, 15, 6), PackedInt32Array(7, 19, 20), PackedInt32Array(19, 23, 6), PackedInt32Array(23, 22, 20), PackedInt32Array(23, 19, 20), PackedInt32Array(20, 22, 21), PackedInt32Array(0, 2, 1), PackedInt32Array(3, 0, 2), PackedInt32Array(10, 3, 0), PackedInt32Array(10, 4, 3), PackedInt32Array(10, 9, 4), PackedInt32Array(5, 9, 4), PackedInt32Array(5, 6, 9), PackedInt32Array(6, 9, 8), PackedInt32Array(7, 8, 6)]
+bones = ["Body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "Body/Head", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1)]
+
+[node name="Body" type="Polygon2D" parent="Polygons"]
+position = Vector2(-646.586, -504.917)
+rotation = -0.000579829
+antialiased = true
+texture = ExtResource("1_hpnmo")
+skeleton = NodePath("../../Skeleton2D")
+polygon = PackedVector2Array(555.903, 311.806, 564.236, 297.222, 588.889, 285.417, 622.917, 270.139, 645.833, 261.806, 703.125, 424.653, 744.792, 462.153, 800.694, 503.125, 803.472, 514.931, 754.861, 525.347, 646.528, 530.208, 552.778, 528.472, 520.486, 527.778, 516.319, 517.361, 552.431, 436.458)
+uv = PackedVector2Array(555.903, 311.806, 564.236, 297.222, 588.889, 285.417, 622.917, 270.139, 645.833, 261.806, 703.125, 424.653, 744.792, 462.153, 800.694, 503.125, 803.472, 514.931, 754.861, 525.347, 646.528, 530.208, 552.778, 528.472, 520.486, 527.778, 516.319, 517.361, 552.431, 436.458)
+polygons = [PackedInt32Array(1, 11, 12), PackedInt32Array(1, 13, 12), PackedInt32Array(14, 13, 1), PackedInt32Array(0, 14, 1), PackedInt32Array(11, 1, 2), PackedInt32Array(11, 10, 2), PackedInt32Array(10, 8, 9), PackedInt32Array(8, 2, 10), PackedInt32Array(7, 8, 2), PackedInt32Array(7, 3, 2), PackedInt32Array(4, 7, 3), PackedInt32Array(4, 5, 7), PackedInt32Array(5, 6, 7)]
+bones = ["Body", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "Body/Head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Body" type="Bone2D" parent="Skeleton2D"]
+position = Vector2(-1.74048, -0.221375)
+rotation = -0.443475
+rest = Transform2D(0.903266, -0.429081, 0.429081, 0.903266, -1.74048, -0.221375)
+
+[node name="Head" type="Bone2D" parent="Skeleton2D/Body"]
+position = Vector2(51.5603, -215.746)
+rotation = -2.05858
+rest = Transform2D(-0.468671, -0.883373, 0.883373, -0.468671, 51.5603, -215.746)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_sldc5")
+}

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://drsldy0qt30qi"]
 
-[ext_resource type="Texture2D" uid="uid://bd8dw5hsmkpjy" path="res://icon.svg" id="1_sdwmj"]
+[ext_resource type="Texture2D" uid="uid://y1fia8unt3s0" path="res://assets/images/gemSlot.png" id="1_3br73"]
 [ext_resource type="Script" path="res://scripts/gemSlot.gd" id="2_jo5cl"]
 
 [node name="GemSlot" type="TextureRect"]
-texture = ExtResource("1_sdwmj")
+texture = ExtResource("1_3br73")
 expand_mode = 2
 script = ExtResource("2_jo5cl")
 

@@ -2,10 +2,10 @@ extends CenterContainer
 
 @export var maxMana = 10.0
 
-@onready var manaLabel = $ManaLabel
+@onready var manaLabel = get_parent().get_node("ManaLabel")
 @onready var manaContents = $ManaContents
 
-var currentMana = 0.0
+var currentMana = 3.0
 
 func _ready():
 	currentMana = 0

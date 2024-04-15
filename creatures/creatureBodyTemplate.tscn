@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0yspeb4tkfh"]
+
+[ext_resource type="Script" path="res://scripts/summonedCreature.gd" id="1_ah118"]
+
+[node name="Squirrel" type="Node2D"]
+script = ExtResource("1_ah118")
+
+[node name="Ploygons" type="Node2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="Ploygons"]
+
+[node name="Skeleton2D" type="Skeleton2D" parent="."]
+
+[node name="Bone2D" type="Bone2D" parent="Skeleton2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -26,3 +26,6 @@ func decreaseHealth(amount):
 func updateHealthDisplay():
 	var contentsMatieral = healthContents.material as ShaderMaterial
 	contentsMatieral.set_shader_parameter("fillAmount", currentHealth / maxHealth)
+
+func setMaxHealth(newMax):
+	maxHealth = newMax

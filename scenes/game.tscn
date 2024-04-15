@@ -1,10 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dtrd1c5tiqsbd"]
+[gd_scene load_steps=13 format=3 uid="uid://dtrd1c5tiqsbd"]
 
 [ext_resource type="PackedScene" uid="uid://ccjwrja5m0nvu" path="res://scenes/ui.tscn" id="1_bav60"]
-[ext_resource type="Texture2D" uid="uid://bd8dw5hsmkpjy" path="res://icon.svg" id="2_tpg1c"]
+[ext_resource type="Texture2D" uid="uid://bgdcb2wwedlbe" path="res://assets/images/environment_background.png" id="2_bwwi6"]
 [ext_resource type="Script" path="res://scripts/gameManager.gd" id="3_2qaok"]
+[ext_resource type="Texture2D" uid="uid://bo6gy3iedjihn" path="res://assets/images/environment_plants.png" id="3_drjg7"]
+[ext_resource type="Texture2D" uid="uid://byva4hf6bglmd" path="res://assets/images/environment_ground.png" id="4_4rmiv"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="4_kehoo"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="4_tbsi5"]
+[ext_resource type="PackedScene" uid="uid://sf180mejrslq" path="res://scenes/player_body.tscn" id="7_bax4u"]
+[ext_resource type="PackedScene" uid="uid://cjuqnqwpatpol" path="res://scenes/enemy_body.tscn" id="9_lv3nk"]
+[ext_resource type="AudioStream" uid="uid://dillay7i6nfer" path="res://assets/sound/critterMusic.wav" id="10_exyqn"]
+[ext_resource type="Script" path="res://scripts/audioPlayer.gd" id="10_usme6"]
+[ext_resource type="Script" path="res://scenes/MusixLoop.gd" id="11_cixyq"]
 
 [node name="Game" type="Node2D"]
 
@@ -15,13 +22,32 @@
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -100
 
-[node name="TextureRect" type="TextureRect" parent="Background"]
+[node name="Background" type="TextureRect" parent="Background"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_tpg1c")
+texture = ExtResource("2_bwwi6")
+expand_mode = 2
+
+[node name="Plants" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_drjg7")
+expand_mode = 2
+
+[node name="Ground" type="TextureRect" parent="Background"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_4rmiv")
+expand_mode = 2
 
 [node name="GameManager" type="Node2D" parent="." node_paths=PackedStringArray("playerCreatureSpawn", "enemyCreatureSpawn")]
 script = ExtResource("3_2qaok")
@@ -29,15 +55,33 @@ playerCreatureSpawn = NodePath("../Player/Spawn")
 enemyCreatureSpawn = NodePath("../Enemy/Spawn")
 
 [node name="Player" type="Node2D" parent="."]
-position = Vector2(150, 600)
+position = Vector2(370, 600)
 script = ExtResource("4_kehoo")
 
 [node name="Spawn" type="Node2D" parent="Player"]
-position = Vector2(400, 0)
+position = Vector2(366, 129)
+
+[node name="PlayerBody" parent="Player" instance=ExtResource("7_bax4u")]
+position = Vector2(-112, 150)
+scale = Vector2(0.5, 0.5)
 
 [node name="Enemy" type="Node2D" parent="."]
-position = Vector2(1770, 600)
+position = Vector2(1520, 600)
 script = ExtResource("4_tbsi5")
 
 [node name="Spawn" type="Node2D" parent="Enemy"]
-position = Vector2(-400, 0)
+position = Vector2(-398, 123)
+
+[node name="EnemyBody" parent="Enemy" instance=ExtResource("9_lv3nk")]
+position = Vector2(32, 147)
+scale = Vector2(0.5, 0.5)
+
+[node name="AudioPlayer" type="Node2D" parent="."]
+script = ExtResource("10_usme6")
+
+[node name="MusicPlayer" type="AudioStreamPlayer2D" parent="AudioPlayer"]
+stream = ExtResource("10_exyqn")
+autoplay = true
+script = ExtResource("11_cixyq")
+
+[connection signal="finished" from="AudioPlayer/MusicPlayer" to="AudioPlayer/MusicPlayer" method="onMusicFinished"]

@@ -41,6 +41,7 @@ func getGem():
 		# TODO Animate Gem
 		emit_signal("gem_gotten", topGem)
 		remove_child(topGem)
-		topGem.queue_free()
+		
+		#topGem.queue_free()
 	else:
 		emit_signal("gems_gone")
